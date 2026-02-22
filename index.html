@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zettel</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <header id="header">
+      <span class="logo">ZETTEL</span>
+      <span class="subtitle">luhmann outliner</span>
+    </header>
+
+    <main id="tree-container">
+      <div id="tree"></div>
+      <div id="empty-state">
+        <p>No notes yet.<br>Add one below.</p>
+      </div>
+    </main>
+
+    <div id="floating-editor" class="hidden">
+      <div class="note-ids-field">
+        <input type="text" id="float-ids" autocomplete="off" spellcheck="false" />
+      </div>
+      <div class="note-content-field">
+        <textarea id="float-content" rows="1"></textarea>
+      </div>
+      <div id="float-conflict-msg" class="conflict-msg hidden"></div>
+    </div>
+
+    <footer id="bottom-bar">
+      <div class="bottom-input-row">
+        <input type="text" id="new-id" placeholder="id  e.g. 1a2b" autocomplete="off" spellcheck="false" />
+        <textarea id="new-content" placeholder="note content…" rows="1"></textarea>
+      </div>
+      <div id="new-conflict-msg" class="conflict-msg hidden"></div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
