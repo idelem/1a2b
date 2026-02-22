@@ -3,41 +3,86 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zettel</title>
+  <title>1a2b</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
 </head>
 <body>
   <div id="app">
     <header id="header">
-      <span class="logo">ZETTEL</span>
-      <span class="subtitle">luhmann outliner</span>
+      <div class="header-inner">
+        <span class="logo">1a2b</span>
+        <span class="subtitle">luhmann outliner</span>
+        <div class="header-actions">
+          <button id="theme-toggle" title="Toggle theme" aria-label="Toggle theme">◐</button>
+          <button id="settings-btn" title="Settings" aria-label="Settings">⚙</button>
+        </div>
+      </div>
     </header>
 
     <main id="tree-container">
-      <div id="tree"></div>
-      <div id="empty-state">
-        <p>No notes yet.<br>Add one below.</p>
+      <div id="tree-inner">
+        <div id="tree"></div>
+        <div id="empty-state">
+          <p>No notes yet.<br>Add one below.</p>
+        </div>
       </div>
     </main>
 
     <div id="floating-editor" class="hidden">
       <div class="note-ids-field">
-        <input type="text" id="float-ids" autocomplete="off" spellcheck="false" />
+        <input type="text" id="float-ids" autocomplete="off" spellcheck="false" placeholder="ids…" />
       </div>
       <div class="note-content-field">
-        <textarea id="float-content" rows="1"></textarea>
+        <textarea id="float-content" rows="1" placeholder="content…"></textarea>
       </div>
       <div id="float-conflict-msg" class="conflict-msg hidden"></div>
     </div>
 
     <footer id="bottom-bar">
-      <div class="bottom-input-row">
-        <input type="text" id="new-id" placeholder="id  e.g. 1a2b" autocomplete="off" spellcheck="false" />
-        <textarea id="new-content" placeholder="note content…" rows="1"></textarea>
+      <div class="bottom-inner">
+        <div class="bottom-input-row">
+          <input type="text" id="new-id" placeholder="id" autocomplete="off" spellcheck="false" />
+          <textarea id="new-content" placeholder="note…" rows="1"></textarea>
+        </div>
+        <div id="new-conflict-msg" class="conflict-msg hidden"></div>
       </div>
-      <div id="new-conflict-msg" class="conflict-msg hidden"></div>
     </footer>
+  </div>
+
+  <!-- Settings Modal -->
+  <div id="settings-overlay" class="hidden">
+    <div id="settings-modal">
+      <div class="settings-header">
+        <span class="settings-title">settings</span>
+        <button id="settings-close">✕</button>
+      </div>
+      <div class="settings-body">
+        <div class="settings-section">
+          <label class="settings-label">accent color</label>
+          <div class="color-input-row">
+            <div class="color-swatch" id="swatch-accent"></div>
+            <input type="text" class="settings-text-input" id="input-accent" placeholder="#c8a96e" maxlength="7" spellcheck="false" />
+          </div>
+        </div>
+        <div class="settings-section">
+          <label class="settings-label">orphan color</label>
+          <div class="color-input-row">
+            <div class="color-swatch" id="swatch-orphan"></div>
+            <input type="text" class="settings-text-input" id="input-orphan" placeholder="#a05c7a" maxlength="7" spellcheck="false" />
+          </div>
+        </div>
+        <div class="settings-section">
+          <label class="settings-label">default id prefix</label>
+          <input type="text" class="settings-text-input full" id="input-default-id" placeholder="e.g. 1a" autocomplete="off" spellcheck="false" />
+          <span class="settings-hint">new notes will prefill with this id</span>
+        </div>
+      </div>
+      <div class="settings-footer">
+        <button id="settings-save" class="btn-primary">save</button>
+        <button id="settings-reset" class="btn-ghost">reset defaults</button>
+      </div>
+    </div>
   </div>
 
   <script src="app.js"></script>
